@@ -71,6 +71,7 @@ async function run() {
 
     // Execute rpmbuild , -ba generates both RPMS and SPRMS
     try {
+      process.env.QA_RPATHS = '3'; // Ignores some check_rpaths issues
       await exec.exec(
         `rpmbuild -ba ${specFile.destFullPath}`
       );
